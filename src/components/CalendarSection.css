@@ -9,9 +9,10 @@
   border: 1px solid #e0e0e0;
   padding: var(--padding-lg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  overflow-x: hidden;
+  overflow: hidden;
   transition: all 0.3s ease;
   color: #213547;
+  width: 100%;
 }
 
 html[data-theme="dark"] .calendar-section {
@@ -20,9 +21,21 @@ html[data-theme="dark"] .calendar-section {
   color: #e0e0e0;
 }
 
+@media (max-width: 1024px) {
+  .calendar-section {
+    padding: var(--padding-md);
+  }
+}
+
 @media (max-width: 768px) {
   .calendar-section {
     padding: var(--padding-md);
     gap: var(--padding-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-section {
+    padding: var(--padding-sm);
   }
 }

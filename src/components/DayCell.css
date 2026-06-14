@@ -10,9 +10,11 @@
   background: #ffffff;
   color: #213547;
   min-height: 100%;
+  height: 100%;
   position: relative;
   transition: all 0.2s;
   cursor: pointer;
+  overflow: hidden;
 }
 
 html[data-theme="dark"] .day-cell {
@@ -98,6 +100,7 @@ html[data-theme="dark"] .activities-list::-webkit-scrollbar-thumb:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #213547;
+  min-width: 0;
 }
 
 html[data-theme="dark"] .activity-item {
