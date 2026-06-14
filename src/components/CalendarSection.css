@@ -4,13 +4,20 @@
   display: flex;
   flex-direction: column;
   gap: var(--padding-md);
-  background: var(--card-bg);
+  background: #ffffff;
   border-radius: var(--border-radius);
-  border: 1px solid var(--card-border);
+  border: 1px solid #e0e0e0;
   padding: var(--padding-lg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
+  color: #213547;
+}
+
+html[data-theme="dark"] .calendar-section {
+  background: #242424;
+  border-color: #333;
+  color: #e0e0e0;
 }
 
 @media (max-width: 768px) {

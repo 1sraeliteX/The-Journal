@@ -5,13 +5,20 @@
   flex-direction: column;
   gap: var(--padding-sm);
   padding: var(--padding-md);
-  border: 1px solid var(--card-border);
+  border: 1px solid #e0e0e0;
   border-radius: var(--border-radius);
-  background: var(--card-bg);
+  background: #ffffff;
+  color: #213547;
   min-height: 100%;
   position: relative;
   transition: all 0.2s;
   cursor: pointer;
+}
+
+html[data-theme="dark"] .day-cell {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #e0e0e0;
 }
 
 .day-cell:hover:not(.padding-month) {
@@ -26,12 +33,17 @@
 
 html[data-theme="dark"] .day-cell.padding-month {
   background: rgba(0, 0, 0, 0.3);
+  opacity: 0.6;
 }
 
 .day-number {
   font-weight: 700;
   font-size: 1.1em;
-  color: var(--text-secondary);
+  color: #1a1a1a;
+}
+
+html[data-theme="dark"] .day-number {
+  color: #f0f0f0;
 }
 
 .activities-list {
@@ -55,16 +67,21 @@ html[data-theme="dark"] .day-cell.padding-month {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--text-primary);
+  color: #213547;
 }
 
 html[data-theme="dark"] .activity-item {
   background: rgba(100, 108, 255, 0.15);
+  color: #e0e0e0;
 }
 
 .activity-item:hover {
   background: rgba(100, 108, 255, 0.15);
   transform: translateX(2px);
+}
+
+html[data-theme="dark"] .activity-item:hover {
+  background: rgba(100, 108, 255, 0.25);
 }
 
 .activity-emoji {
@@ -91,9 +108,13 @@ html[data-theme="dark"] .activity-item {
 
 .overflow-indicator {
   font-size: 0.75em;
-  color: var(--text-secondary);
+  color: #1a1a1a;
   opacity: 0.7;
   padding: 2px 4px;
+}
+
+html[data-theme="dark"] .overflow-indicator {
+  color: #b0b0b0;
 }
 
 .add-activity-btn {
@@ -101,32 +122,92 @@ html[data-theme="dark"] .activity-item {
   width: 24px;
   height: 24px;
   padding: 0;
-  border: 1px solid var(--card-border);
+  border: 1px solid #e0e0e0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
   background: rgba(100, 108, 255, 0.08);
-  color: var(--primary-color);
+  color: #646cff;
   transition: all 0.2s;
   line-height: 1;
   text-align: center;
   flex-shrink: 0;
 }
 
+html[data-theme="dark"] .add-activity-btn {
+  background: rgba(100, 108, 255, 0.15);
+  border-color: #333;
+}
+
 .add-activity-btn:hover {
-  background: var(--primary-color);
+  background: #646cff;
   color: white;
   transform: scale(1.1);
 }
 
-html[data-theme="dark"] .add-activity-btn {
-  background: rgba(100, 108, 255, 0.15);
+.day-cell-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-html[data-theme="dark"] .add-activity-btn:hover {
-  background: var(--primary-color);
+.copy-activities-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  background: rgba(76, 175, 80, 0.08);
+  color: #4caf50;
+  transition: all 0.2s;
+  line-height: 1;
+  text-align: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] .copy-activities-btn {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: #333;
+}
+
+.copy-activities-btn:hover {
+  background: #4caf50;
+  color: white;
+  transform: scale(1.1);
+}
+
+.copy-toast {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+  animation: slideUp 0.3s ease;
+  z-index: 100;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 @media (max-width: 480px) {

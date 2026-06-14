@@ -6,10 +6,12 @@
  * - Up to 5 activities with emoji, name, and checkbox to mark as completed
  * - "Show More" button if overflow
  * - "Add Activity" button
+ * - "Copy Activities" button (if activities exist on this day)
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useActivities } from '../context/ActivityContext';
+import { getActivitiesForDay, copyActivitiesToDate } from '../utils/activities';
 import type { Activity } from '../types';
 import './DayCell.css';
 
@@ -28,7 +30,8 @@ const DayCell: React.FC<DayCellProps> = ({
   displayedActivities,
   overflow,
 }) => {
-  const { openCreateModal, openEditModal, updateActivity } = useActivities();
+  const { openCreateModal, openEditModal, updateActivity, activities, addActivity } = useActivities();
+  const [showCopyToast, setShowCopyToast] = useState(false);
 
   const handleAddActivity = () => {
     openCreateModal(date);
@@ -46,6 +49,26 @@ const DayCell: React.FC<DayCellProps> = ({
       updatedAt: Date.now(),
     });
   };
+
+  const handleCopyActivities = () => {
+    const todayDate = new Date().toISOString().split('T')[0];
+    const dayActivities = getActivitiesForDay(activities, date);
+    
+    if (dayActivities.length === 0) {
+      alert('No activities to copy from this day');
+      return;
+    }
+
+    // Copy to today
+    const newActivities = copyActivitiesToDate(activities, date, todayDate);
+    newActivities.forEach(activity => addActivity(activity));
+    
+    setShowCopyToast(true);
+    setTimeout(() => setShowCopyToast(false), 2000);
+  };
+
+  const dayActivities = getActivitiesForDay(activities, date);
+  const canCopy = dayActivities.length > 0;
 
   return (
     <div
@@ -87,13 +110,30 @@ const DayCell: React.FC<DayCellProps> = ({
         </div>
       )}
 
-      <button
-        className="add-activity-btn"
-        onClick={handleAddActivity}
-        title="Add activity for this day"
-      >
-        +
-      </button>
+      <div className="day-cell-buttons">
+        {canCopy && (
+          <button
+            className="copy-activities-btn"
+            onClick={handleCopyActivities}
+            title="Copy all activities from this day to today"
+          >
+            📋
+          </button>
+        )}
+        <button
+          className="add-activity-btn"
+          onClick={handleAddActivity}
+          title="Add activity for this day"
+        >
+          +
+        </button>
+      </div>
+
+      {showCopyToast && (
+        <div className="copy-toast">
+          ✓ Copied to today
+        </div>
+      )}
     </div>
   );
 };

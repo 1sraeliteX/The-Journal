@@ -185,3 +185,29 @@ export function getActivitiesInDateRange(
     })
     .sort((a, b) => b.createdAt - a.createdAt);
 }
+
+
+/**
+ * Copies activities from one date to another
+ * 
+ * @param activities - Array of all activities
+ * @param fromDate - Source date in ISO 8601 format (YYYY-MM-DD)
+ * @param toDate - Target date in ISO 8601 format (YYYY-MM-DD)
+ * @returns Array of newly created activities for the target date
+ */
+export function copyActivitiesToDate(
+  activities: Activity[],
+  fromDate: string,
+  toDate: string
+): Activity[] {
+  const sourceActivities = getActivitiesForDay(activities, fromDate);
+  
+  // Create new activities with the same properties but different date and ID
+  return sourceActivities.map((activity) => ({
+    ...activity,
+    id: `${activity.id}-copy-${Date.now()}`,
+    date: toDate,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  }));
+}

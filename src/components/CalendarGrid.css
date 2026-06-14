@@ -12,14 +12,27 @@
   grid-template-columns: repeat(7, 1fr);
   gap: var(--padding-sm);
   margin-bottom: var(--padding-md);
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: var(--padding-sm) 0;
+  z-index: 10;
+}
+
+html[data-theme="dark"] .calendar-headers {
+  background: #242424;
 }
 
 .calendar-header {
   text-align: center;
   font-weight: 600;
   font-size: 0.9em;
-  color: var(--text-secondary);
+  color: #1a1a1a;
   padding: var(--padding-md) 0;
+}
+
+html[data-theme="dark"] .calendar-header {
+  color: #b0b0b0;
 }
 
 .calendar-cells {
