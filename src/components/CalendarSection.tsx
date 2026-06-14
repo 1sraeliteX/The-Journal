@@ -12,13 +12,17 @@ import MonthSelector from './MonthSelector';
 import CalendarGrid from './CalendarGrid';
 import './CalendarSection.css';
 
-const CalendarSection: React.FC = () => {
+interface CalendarSectionProps {
+  openDayModal: (date: string) => void;
+}
+
+const CalendarSection: React.FC<CalendarSectionProps> = ({ openDayModal }) => {
   const { selectedMonth, selectedYear } = useActivities();
 
   return (
     <div className="calendar-section">
       <MonthSelector />
-      <CalendarGrid key={`${selectedYear}-${selectedMonth}`} />
+      <CalendarGrid key={`${selectedYear}-${selectedMonth}`} openDayModal={openDayModal} />
     </div>
   );
 };

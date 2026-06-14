@@ -14,7 +14,11 @@ import { getActivitiesForDate } from '../utils/activities';
 import DayCell from './DayCell';
 import './CalendarGrid.css';
 
-const CalendarGrid: React.FC = () => {
+interface CalendarGridProps {
+  openDayModal: (date: string) => void;
+}
+
+const CalendarGrid: React.FC<CalendarGridProps> = ({ openDayModal }) => {
   const { activities, selectedMonth, selectedYear } = useActivities();
 
   // Generate calendar grid for the selected month
@@ -48,6 +52,7 @@ const CalendarGrid: React.FC = () => {
               isCurrentMonth={isCurrentMonth}
               displayedActivities={dayActivities.displayed}
               overflow={dayActivities.overflow}
+              openDayModal={openDayModal}
             />
           );
         })}
