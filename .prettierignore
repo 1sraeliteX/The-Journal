@@ -1,0 +1,13 @@
+# Ignore artifacts:
+dist
+build
+coverage
+node_modules
+
+# Ignore files:
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.pem
+package.json

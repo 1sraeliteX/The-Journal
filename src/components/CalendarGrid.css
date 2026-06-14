@@ -1,0 +1,70 @@
+/* CalendarGrid component styles */
+
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+  overflow-x: hidden;
+}
+
+.calendar-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--padding-sm);
+  margin-bottom: var(--padding-md);
+}
+
+.calendar-header {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  padding: var(--padding-md) 0;
+}
+
+.calendar-cells {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--padding-sm);
+  grid-auto-rows: auto;
+  width: 100%;
+}
+
+/* Ensure each cell is at least 100px tall on desktop */
+@media (min-width: 768px) {
+  .calendar-cells {
+    grid-auto-rows: minmax(120px, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-cells {
+    grid-auto-rows: minmax(100px, 1fr);
+  }
+  
+  .calendar-header {
+    font-size: 0.8em;
+    padding: var(--padding-sm) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-headers {
+    gap: 4px;
+    margin-bottom: var(--padding-sm);
+  }
+
+  .calendar-cells {
+    gap: 4px;
+    grid-auto-rows: minmax(80px, 1fr);
+  }
+
+  .calendar-header {
+    font-size: 0.7em;
+    padding: 4px 0;
+  }
+}

@@ -1,0 +1,76 @@
+/* ActivityJournal root component styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200..800&display=swap');
+
+.activity-journal {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.activity-journal-header {
+  position: relative;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  color: white;
+  padding: var(--padding-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-journal-header h1 {
+  margin: 0;
+  font-size: 2em;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.activity-journal-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-lg);
+  padding: var(--padding-lg);
+  flex: 1;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.journal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-lg);
+  width: 100%;
+}
+
+.calendar-container {
+  flex: 1;
+}
+
+.analytics-container {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .activity-journal-main {
+    gap: var(--padding-md);
+    padding: var(--padding-md);
+  }
+
+  .activity-journal-header h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .activity-journal-header {
+    padding: var(--padding-md);
+  }
+
+  .activity-journal-main {
+    padding: var(--padding-sm);
+    gap: var(--padding-md);
+  }
+}

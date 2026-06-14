@@ -1,0 +1,115 @@
+/* Global styles for Activity Journal App */
+
+:root {
+  --primary-color: #646cff;
+  --secondary-color: #1a1a1a;
+  --border-color: #e0e0e0;
+  --success-color: #4caf50;
+  --danger-color: #f44336;
+  --warning-color: #ff9800;
+  --padding-sm: 8px;
+  --padding-md: 16px;
+  --padding-lg: 24px;
+  --border-radius: 8px;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #213547;
+  --text-secondary: #1a1a1a;
+  --text-tertiary: #6b6375;
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --input-bg: #ffffff;
+  --input-border: #e0e0e0;
+}
+
+html[data-theme="dark"] {
+  --bg-primary: #242424;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #f0f0f0;
+  --text-tertiary: #9ca3af;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
+  --input-bg: #1e1e1e;
+  --input-border: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #242424;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #f0f0f0;
+    --text-tertiary: #9ca3af;
+    --card-bg: #1e1e1e;
+    --card-border: #333;
+    --input-bg: #1e1e1e;
+    --input-border: #333;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5em;
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-secondary);
+}

@@ -1,0 +1,47 @@
+/* MonthSelector component styles */
+
+.month-selector {
+  display: flex;
+  gap: var(--padding-md);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.month-dropdown,
+.year-dropdown {
+  padding: 0.6em 1em;
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.month-dropdown:hover,
+.year-dropdown:hover {
+  border-color: var(--primary-color);
+}
+
+.month-dropdown:focus,
+.year-dropdown:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .month-selector {
+    gap: var(--padding-sm);
+  }
+
+  .month-dropdown,
+  .year-dropdown {
+    min-width: 100px;
+    font-size: 0.9em;
+    padding: 0.5em 0.8em;
+  }
+}
